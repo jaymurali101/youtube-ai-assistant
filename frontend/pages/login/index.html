@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator+ | Login</title>
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../../styles/animations.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">Creator+</div>
+    </header>
+
+    <div class="page-container">
+        <div class="login-container">
+            <h1 class="page-title">Login</h1>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="primary-button" id="loginButton">Login</button>
+                    <div class="error-message" id="loginError"></div>
+                </div>
+            </form>
+            
+            <div class="links-container">
+                <a href="../reset-password/index.html" class="text-link">Forgot Password</a>
+                <a href="../signup/index.html" class="text-link create-account">Create an Account</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/auth.js"></script>
+    <script src="../../scripts/validation.js"></script>
+    <script src="../../scripts/ui.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

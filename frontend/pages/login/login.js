@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loginUser(emailInput.value, passwordInput.value)
                 .then(success => {
                     if (success) {
-                        // Navigate to Dashboard with animation
+                        // Navigate to Home page with animation
                         navigateTo('../home/index.html');
                     } else {
                         hideLoading(loginButton, originalButtonText);

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator+ | Generate Script</title>
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../../styles/animations.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">Creator+</div>
+    </header>
+
+    <div class="page-container">
+        <div class="home-content">
+            <h1 class="page-title">Generate Your Video Script</h1>
+            
+            <form id="scriptForm">
+                <div class="form-group">
+                    <label for="channelNiche">Channel Niche</label>
+                    <input type="text" id="channelNiche" name="channelNiche" placeholder="e.g. True Crime, History, Technology" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="videoTopic">Video Topic</label>
+                    <input type="text" id="videoTopic" name="videoTopic" placeholder="e.g. The History of Bitcoin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Video Format</label>
+                    <div class="format-buttons">
+                        <button type="button" class="format-button" data-format="short">
+                            <span class="checkbox"></span>
+                            Short (&lt;60s)
+                        </button>
+                        <button type="button" class="format-button" data-format="medium">
+                            <span class="checkbox"></span>
+                            Medium (&lt;5 min)
+                        </button>
+                        <button type="button" class="format-button" data-format="long">
+                            <span class="checkbox"></span>
+                            Long (&lt;15 mins)
+                        </button>
+                    </div>
+                    <input type="hidden" id="videoFormat" name="videoFormat" value="">
+                </div>
+                
+                <div class="form-group">
+                    <label for="extraInfo">Extra Information</label>
+                    <textarea id="extraInfo" name="extraInfo" placeholder="Additional context or requirements for your script" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="primary-button" id="generateButton">Generate Script</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="../album/index.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>Scripts</span>
+        </a>
+        <a href="../profile/index.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <script src="../../scripts/auth.js"></script>
+    <script src="../../scripts/ui.js"></script>
+    <script src="../../scripts/script-service.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

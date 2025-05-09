@@ -94,6 +94,34 @@ body {
     text-align: center;
 }
 
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Responsive containers for all pages */
+.page-container {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Media queries for different screen sizes */
+@media screen and (min-width: 1600px) {
+    .container, .page-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container, .page-container {
+        width: 100%;
+    }
+}
+
 .mt-sm { margin-top: var(--spacing-sm); }
 .mt-md { margin-top: var(--spacing-md); }
 .mt-lg { margin-top: var(--spacing-lg); }

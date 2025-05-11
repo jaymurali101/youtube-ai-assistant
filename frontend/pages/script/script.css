@@ -1,4 +1,4 @@
-/* Script page specific styles */
+/* Script page specific styles - COMPLETE FILE */
 body {
     margin: 0;
     padding: 0;
@@ -14,19 +14,37 @@ body {
 }
 
 .page-container {
-    display: flex;
-    height: calc(100vh - 130px);
-    padding: 0;
-    position: relative;
+    padding: 20px;
+    padding-bottom: 80px;
+    display: flex; 
+    flex-direction: row;
+    height: calc(100vh - 150px);
 }
 
-/* Script section */
+/* Generated Script title */
+.page-title {
+    color: var(--text-color);
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* Main content layout - THIS IS THE KEY CHANGE - HORIZONTAL LAYOUT */
+.content-layout {
+    display: flex; 
+    flex-direction: row;
+    gap: 24px;
+    height: calc(100vh - 200px);
+    align-items: flex-start;
+}
+
+/* Script column */
 .script-section {
     flex: 3;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    padding-top: 120px; /* Match the Visual Suggestions starting position */
+    margin-top: 40px;
 }
 
 .script-content-wrapper {
@@ -37,6 +55,8 @@ body {
     overflow: hidden;
     margin-top: 8px;
     height: calc(100% - 30px);
+    
+    
 }
 
 .script-content {
@@ -51,35 +71,47 @@ body {
     resize: none;
     outline: none;
     overflow-y: auto;
+    
 }
 
-/* Sidebar */
-.sidebar {
-    flex: 1;
+.script-label {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+/* Visuals column */
+.visuals-column {
+    flex: 3;
     display: flex;
     flex-direction: column;
-    padding: 20px 20px 20px 0;
+    gap: 24px;
+    height: 100%; 
 }
 
-/* Visual suggestions section */
 .visuals-section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+}
+
+.visuals-label {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
 }
 
 .visuals-container {
     flex: 1;
     background-color: var(--card-background);
     border-radius: 12px;
-    padding: 16px;
     overflow-y: auto;
-    margin-top: 8px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    height: calc(100% - 30px);
+    padding: 16px;
 }
 
 .visual-suggestion {
@@ -92,35 +124,38 @@ body {
     align-items: center;
 }
 
-.placeholder-message {
-    color: var(--text-secondary);
-    text-align: center;
-    padding: 40px 0;
+.visual-suggestion img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 /* Export section */
 .export-section {
-    flex: 0 0 auto;
-    background-color: var(--card-background);
-    border-radius: 12px;
-    padding: 16px;
+    margin-top: auto;
+}
+
+.export-label {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
 }
 
 .export-buttons {
     display: flex;
     gap: 12px;
-    margin-top: 16px;
 }
 
 .export-button {
-    padding: 10px 20px;
+    padding: l0px 24px;
     border: none;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     transition: filter 0.3s ease, transform 0.2s ease;
     color: white;
-    flex: 1;
+    background-color: var(--primary-color);
 }
 
 .export-button:hover {
@@ -129,18 +164,6 @@ body {
 
 .export-button:active {
     transform: scale(0.98);
-}
-
-.markdown-btn, .pdf-btn {
-    background-color: var(--primary-color);
-}
-
-/* Section headers */
-h2 {
-    color: var(--text-color);
-    font-size: 20px;
-    margin: 0 0 8px 0;
-    font-weight: 600;
 }
 
 /* Bottom navigation */
@@ -200,67 +223,23 @@ h2 {
     opacity: 1;
 }
 
-/* Responsive for different zoom levels and screen sizes */
-@media screen and (min-width: 1200px) {
-    .page-container {
-        max-width: 1440px;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .script-section {
-        flex: 2.5;
-    }
-    
-    .sidebar {
-        flex: 1;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .script-section {
-        flex: 2;
-    }
-    
-    .sidebar {
-        flex: 1;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .page-container {
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-layout {
         flex-direction: column;
         height: auto;
     }
     
-    .script-section {
-        flex: none;
-        height: 50vh;
-        padding-top: 20px;
-    }
-    
-    .sidebar {
-        flex: none;
-        padding: 0 20px 20px 20px;
-    }
-    
-    .visuals-section {
-        height: 30vh;
-    }
-}
-
-/* Ensure viewport units work at different zoom levels */
-@media screen and (min-width: 768px) {
-    .page-container {
-        min-height: 600px;
+    .script-column, 
+    .visuals-column {
+        width: 100%;
     }
     
     .script-content-wrapper {
-        min-height: 400px;
+        height: 50vh;
     }
     
     .visuals-container {
-        min-height: 300px;
+        height: 30vh;
     }
 }

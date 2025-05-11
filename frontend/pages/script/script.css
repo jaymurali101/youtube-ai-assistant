@@ -45,11 +45,11 @@ body {
 }
 
 .script-section h2 {
-    margin-top: 40px; /* This should align with the Visual Suggestions title */
+    margin-top: 10px; /* This should align with the Visual Suggestions title */
 }
 
 .script-content-wrapper {
-    height: calc(100vh - 200px); /* This should make it extend to bottom of export */
+    height: calc(100vh - 140px); /* This should make it extend to bottom of export */
     background-color: var(--card-background);
     border-radius: 12px;
     overflow: hidden;
@@ -84,7 +84,7 @@ body {
 }
 
 .sidebar h2 {
-    margin-top: 40px; /* Same as script section h2 */
+    margin-top: 10px; /* Same as script section h2 */
 }
 
 /* Visuals column */
@@ -110,7 +110,7 @@ body {
 }
 
 .visuals-container {
-    height: calc(100vh - 320px); /* Adjust to leave room for export section */
+    height: calc(100vh - 245px); /* Adjust to leave room for export section */
     background-color: var(--card-background);
     border-radius: 12px;
     padding: 16px;

@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Store in localStorage for retrieval on script page (completed scripts remain in localStorage)
             const scripts = JSON.parse(localStorage.getItem('generatedScripts') || '[]');
+            const now = new Date(); // Fixed: Define the 'now' variable
             scripts.push({
                 id: tempScriptId,
                 userId: getCurrentUser().id,
@@ -81,7 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 channelNiche: formData.channelNiche,
                 videoFormat: formData.videoFormat,
                 extraInfo: formData.extraInfo,
-                createdAt: new Date().toISOString(),
+                createdAt: now.toISOString(),
+                generatedAt: now.toISOString(), // Fixed: Use 'now' instead of undefined 'now'
                 // This would normally come from the backend
                 content: `# ${formData.videoTopic}\n\n` +
                          `This is a placeholder for your generated script about ${formData.videoTopic} ` +

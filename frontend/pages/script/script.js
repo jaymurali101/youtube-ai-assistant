@@ -40,6 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate script content
     scriptContent.value = script.content || '';
     
+    // Display the generation date
+    const scriptDateElement = document.getElementById('scriptDate');
+    if (script.generatedAt) {
+        scriptDateElement.textContent = `Generated on ${formatScriptDate(script.generatedAt)}`;
+    } else if (script.createdAt) {
+        // Fallback to createdAt for existing scripts
+        scriptDateElement.textContent = `Generated on ${formatScriptDate(script.createdAt)}`;
+    }
+    
     // Create auto-save indicator
     const autoSaveIndicator = document.createElement('div');
     autoSaveIndicator.className = 'auto-save-indicator';
@@ -131,5 +140,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 visualsContainer.appendChild(visualElement);
             });
         }
+    }
+    
+    // Function to format dates
+    function formatScriptDate(date) {
+        const months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        
+        const d = new Date(date);
+        const month = months[d.getMonth()];
+        const day = d.getDate();
+        const year = d.getFullYear();
+        
+        // Add ordinal suffix (st, nd, rd, th)
+        const getOrdinalSuffix = (n) => {
+            const j = n % 10;
+            const k = n % 100;
+            if (j === 1 && k !== 11) return 'st';
+            if (j === 2 && k !== 12) return 'nd';
+            if (j === 3 && k !== 13) return 'rd';
+            return 'th';
+        };
+        
+        return `${month} ${day}${getOrdinalSuffix(day)}, ${year}`;
     }
 });

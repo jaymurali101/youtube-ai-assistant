@@ -111,3 +111,28 @@ function exportScriptAsMarkdown(scriptId) {
     
     showToast('Script exported as Markdown', 'success');
 }
+
+// Add this function to format dates
+function formatScriptDate(date) {
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    
+    const d = new Date(date);
+    const month = months[d.getMonth()];
+    const day = d.getDate();
+    const year = d.getFullYear();
+    
+    // Add ordinal suffix (st, nd, rd, th)
+    const getOrdinalSuffix = (n) => {
+        const j = n % 10;
+        const k = n % 100;
+        if (j === 1 && k !== 11) return 'st';
+        if (j === 2 && k !== 12) return 'nd';
+        if (j === 3 && k !== 13) return 'rd';
+        return 'th';
+    };
+    
+    return `${month} ${day}${getOrdinalSuffix(day)}, ${year}`;
+}

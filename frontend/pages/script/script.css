@@ -121,6 +121,12 @@ body {
     gap: 16px;
 }
 
+.script-date {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-style: italic;
+}
 
 
 .visual-suggestion {

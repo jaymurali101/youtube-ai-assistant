@@ -97,6 +97,57 @@ async function resetPassword(email, newPassword) {
     });
 }
 
+async function updateUserCredentials(newEmail, newPassword) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            try {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const currentUser = getCurrentUser();
+                
+                if (!currentUser) {
+                    reject('No user logged in');
+                    return;
+                }
+                
+                const userIndex = users.findIndex(user => user.id === currentUser.id);
+                
+                if (userIndex === -1) {
+                    reject('User not found');
+                    return;
+                }
+                
+                // Check if email is already taken by another user
+                const emailExists = users.some(user => 
+                    user.email.toLowerCase() === newEmail.toLowerCase() && 
+                    user.id !== currentUser.id
+                );
+                
+                if (emailExists) {
+                    reject('Email already in use');
+                    return;
+                }
+                
+                // Update credentials
+                users[userIndex].email = newEmail;
+                users[userIndex].password = newPassword;
+                
+                // Save updated users
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // Update current user session
+                localStorage.setItem('currentUser', JSON.stringify({
+                    ...currentUser,
+                    email: newEmail
+                }));
+                
+                resolve(true);
+            } catch (error) {
+                reject(error);
+            }
+        }, 500);
+    });
+}
+
 // Logout user
 function logoutUser() {
     localStorage.removeItem('authToken');

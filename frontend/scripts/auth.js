@@ -25,6 +25,8 @@ async function loginUser(email, password) {
                 localStorage.setItem('authToken', authToken);
                 localStorage.setItem('currentUser', JSON.stringify({
                     id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
                     email: user.email
                 }));
                 resolve(true);
@@ -36,7 +38,7 @@ async function loginUser(email, password) {
 }
 
 // Register new user
-async function registerUser(email, password) {
+async function registerUser(firstName, lastName, email, password) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             try {
@@ -49,11 +51,13 @@ async function registerUser(email, password) {
                     return;
                 }
                 
-                // Create new user
+                // Create new user with first and last name
                 const newUser = {
                     id: generateUserId(),
-                    email,
-                    password,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
                     createdAt: new Date().toISOString()
                 };
                 

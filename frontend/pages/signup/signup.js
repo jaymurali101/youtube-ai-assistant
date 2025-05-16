@@ -1,14 +1,18 @@
 // Signup page specific JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signupForm');
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
+    const firstNameError = document.getElementById('firstNameError');
+    const lastNameError = document.getElementById('lastNameError');
     const emailError = document.getElementById('emailError');
     const passwordError = document.getElementById('passwordError');
     const signupError = document.getElementById('signupError');
     const submitButton = document.getElementById('submitButton');
 
-    // Password strength indicator (optional addition)
+    // Password strength indicator
     passwordInput.addEventListener('input', () => {
         const password = passwordInput.value;
         
@@ -34,12 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         
         // Reset error messages
+        firstNameError.textContent = '';
+        lastNameError.textContent = '';
         emailError.textContent = '';
         passwordError.textContent = '';
         signupError.textContent = '';
         
         // Validate form
         let isValid = true;
+        
+        // First name validation
+        if (!firstNameInput.value.trim()) {
+            firstNameError.textContent = 'First name is required';
+            isValid = false;
+        } else if (firstNameInput.value.trim().length < 2) {
+            firstNameError.textContent = 'First name must be at least 2 characters';
+            isValid = false;
+        }
+        
+        // Last name validation
+        if (!lastNameInput.value.trim()) {
+            lastNameError.textContent = 'Last name is required';
+            isValid = false;
+        } else if (lastNameInput.value.trim().length < 2) {
+            lastNameError.textContent = 'Last name must be at least 2 characters';
+            isValid = false;
+        }
         
         // Email validation
         if (!emailInput.value) {
@@ -78,8 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            // Register new user
-            registerUser(emailInput.value, passwordInput.value)
+            // Register new user with first and last name
+            registerUser(
+                firstNameInput.value.trim(),
+                lastNameInput.value.trim(),
+                emailInput.value,
+                passwordInput.value
+            )
                 .then(success => {
                     if (success) {
                         // Show success message

@@ -49,7 +49,7 @@ body {
 }
 
 .script-content-wrapper {
-    height: calc(100vh - 110px); /* This should make it extend to bottom of export */
+    height: calc(100vh - 85px); /* This should make it extend to bottom of export */
     background-color: var(--card-background);
     border-radius: 12px;
     overflow: hidden;
